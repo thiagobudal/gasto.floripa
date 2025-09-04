@@ -285,14 +285,17 @@
     </div>
 
     <script>
-        // Registrar Service Worker para funcionar offline
+        // ============================================
+        // ATENÇÃO: Para ativar o PWA quando hospedar,
+        // descomente as linhas abaixo (remova /* e */)
+        // ============================================
+        /*
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js')
-                    .then(reg => console.log('Service Worker registrado'))
-                    .catch(err => console.log('Service Worker falhou:', err));
-            });
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log('Service Worker registrado'))
+                .catch(err => console.log('Service Worker falhou:', err));
         }
+        */
 
         // Prompt de instalação PWA
         let deferredPrompt;
@@ -304,10 +307,12 @@
 
         function installPWA() {
             document.getElementById('installPrompt').style.display = 'none';
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                deferredPrompt = null;
-            });
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    deferredPrompt = null;
+                });
+            }
         }
 
         function dismissInstall() {
