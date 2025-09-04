@@ -285,17 +285,12 @@
     </div>
 
     <script>
-        // ============================================
-        // ATENÇÃO: Para ativar o PWA quando hospedar,
-        // descomente as linhas abaixo (remova /* e */)
-        // ============================================
-        /*
-        if ('serviceWorker' in navigator) {
+                if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('service-worker.js')
                 .then(reg => console.log('Service Worker registrado'))
                 .catch(err => console.log('Service Worker falhou:', err));
         }
-        */
+       
 
         // Prompt de instalação PWA
         let deferredPrompt;
